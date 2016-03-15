@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Title</title>
+  <title>Container Vulnerability Analysis</title>
   <meta charset="utf-8">
   <style>
     @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -23,19 +23,55 @@
     .remark-inline-code {
       font-family: 'Ubuntu Mono';
     }
+
+    .note {
+      color: red;
+      font-size: 150%;
+    }
+
+    .quote {
+      font-style: italic;
+    }
+
+    .subtitle {
+        font-size: 80%;
+    }
+
+    .profile {
+      position: absolute;
+      left:70%;
+      top: 10%;
+    }
+
+    a {
+  transition: color .4s;
+  color: #265C83;
+}
+
+a:link,
+a:visited { color: #265C83; }
+a:hover   { color: #7FDBFF; }
+a:active  {
+  transition: color .3s;
+  color: #007BE6;
+}
+
+.link { text-decoration: none; }
   </style>
 </head>
 
 <body>
-  <textarea id="source">
-
-  </textarea>
   <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
   </script>
   <script>
+      remark.macros.scale = function (percentage) {
+    var url = this;
+    return '<img src="' + url + '" style="width: ' + percentage + '" />';
+  };
     var slideshow = remark.create({
       sourceUrl: 'hyperclair.md'
     });
+
   </script>
 </body>
 
