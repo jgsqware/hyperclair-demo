@@ -1,21 +1,28 @@
-Hyperclair
-----------------------------
+# Hyperclair
+---
 
-# Agenda
-- Who am I
-- Docker Image, Layers & Registry
-- Vulnerabilities
+#Agenda
+
+1. Who am I?
+2. Docker Image, Layers & Registry
+3. Vulnerabilities
   - Static vs Dynamic Analysis
-- CoreOS Clair
-  -
-  - Quay.io
-- On Premise
-  - Hyperclair
+4. CoreOS Clair
+  - Use Case
+    - Quay.io
+  - On Premise
+5. Hyperclair
     - Why?
     - What could you do with hyperclair?
       - Analyse
       - Report
-    - Demo
+6. Demo
+
+---
+
+# Who am I?
+
+---
 
 # Security
 
