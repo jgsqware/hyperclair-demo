@@ -11,7 +11,7 @@ class: middle,center
 - Golang dev newbie
 - Eternal frustrated
 
-.profile[![:scale 60%](/images/profile.jpg)]
+.profile[![:scale 60%](images/profile.jpg)]
 
 Twitter: [@jgsqware](https://twitter.com/jgsqware)
 
@@ -48,7 +48,7 @@ class: middle, center
 class: middle, center
 
 ## [Container-Solution's Docker Security Cheat-sheet](http://container-solutions.com/docker-security-cheat-sheet/)
-.center[![:scale 100%](/images/docker-security-cheat-sheet.png)]
+.center[![:scale 100%](images/docker-security-cheat-sheet.png)]
 
 ---
 
@@ -56,14 +56,14 @@ class: middle, center
 # Docker security
 Since 1.10
 
-.center[![:scale 100%](/images/docker-security.jpg)]
+.center[![:scale 100%](images/docker-security.jpg)]
 
 ---
 
 # Docker security
 Since 1.10 .right[.note[-> Missing vulnerability analysis]]
 
-.center[![:scale 100%](/images/docker-security.jpg)]
+.center[![:scale 100%](images/docker-security.jpg)]
 
 
 # Vulnerabilities
@@ -127,13 +127,13 @@ ISO 27005 defines vulnerability as:
 
 # Docker Image, Layers & Registry
 
-.center[![:scale 90%](/images/docker-layered-filesystem-1.jpg)]
+.center[![:scale 90%](images/docker-layered-filesystem-1.jpg)]
 
 ---
 
 # Docker Layers
 
-.center[![:scale 100%](/images/docker-layered-filesystem.png)]
+.center[![:scale 100%](images/docker-layered-filesystem.png)]
 
 ---
 class: middle, center
