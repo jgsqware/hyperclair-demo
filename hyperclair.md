@@ -1,12 +1,15 @@
 class: middle,center
 # Container Vulnerability Analysis
-## CoreOS Clair & Hyperclair
+## CoreOS Clair & Clair Control (formerly Hyperclair)
 
+.center[![:scale 30%](images/wemanity.png)]
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 # Who am I?
 
-- Devops Spreader
+
+- Devops facilitator @ Wemanity
 - Docker lover
 - Golang dev newbie
 - Eternal frustrated
@@ -17,7 +20,11 @@ Twitter: [@jgsqware](https://twitter.com/jgsqware)
 
 Github: [github.com/jgsqware](http://www.github.com/jgsqware)
 
+???
+
+
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 #Agenda
 
@@ -25,7 +32,7 @@ Github: [github.com/jgsqware](http://www.github.com/jgsqware)
 1. Vulnerabilities
 1. Docker Image, Layers & Registry
 1. CoreOS Clair
-1. Hyperclair
+1. Clair Control
 1. Demo
 
 
@@ -33,12 +40,16 @@ Github: [github.com/jgsqware](http://www.github.com/jgsqware)
 ---
 
 class: center, middle
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
-##What's the main concern when talking about Docker in production/sensitive environment?
+
+##What's one of the main concern when talking about using container in production/sensitive environment?
 
 ---
 
 class: middle, center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 # SECURITY!
 
@@ -46,30 +57,34 @@ class: middle, center
 
 ---
 class: middle, center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 ## [Container-Solution's Docker Security Cheat-sheet](http://container-solutions.com/docker-security-cheat-sheet/)
 .center[![:scale 100%](images/docker-security-cheat-sheet.png)]
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Docker security
-Since 1.10
+Since 1.10 .right[.note[&nbsp;]]
 
 .center[![:scale 100%](images/docker-security.jpg)]
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 # Docker security
 Since 1.10 .right[.note[-> Missing vulnerability analysis]]
 
 .center[![:scale 100%](images/docker-security.jpg)]
 
-
 # Vulnerabilities
 class: middle, center
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # What is a vulnerability?
@@ -81,6 +96,7 @@ ISO 27005 defines vulnerability as:
 > .quote[An asset is anything that has value to the organization, its business operations and their continuity, including information resources that support the organization's mission]
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Last big vulnerabilities
@@ -89,6 +105,8 @@ ISO 27005 defines vulnerability as:
 - **Dual A/AAAA DNS queries** [CVE-2015-7547](https://access.redhat.com/security/cve/cve-2015-7547): GNU C Library (aka glibc or libc6)
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 # CVE - .subtitle[Common Vulnerabilities and Exposure tracker]
 
 .center[[Debian Security Bug Tracker](https://security-tracker.debian.org/tracker)]
@@ -98,6 +116,7 @@ ISO 27005 defines vulnerability as:
 .center[[rpm](http://www.rpm.org)]
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Vulnerability Analysis
@@ -108,6 +127,7 @@ ISO 27005 defines vulnerability as:
 - Static analysis
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Dynamic analysis
@@ -116,6 +136,7 @@ ISO 27005 defines vulnerability as:
 - container must be running
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Static analysis
@@ -124,12 +145,14 @@ ISO 27005 defines vulnerability as:
 - the filesystem of the container image is inspected
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 # Docker Image, Layers & Registry
 
 .center[![:scale 90%](images/docker-layered-filesystem-1.jpg)]
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 # Docker Layers
 
@@ -137,9 +160,13 @@ ISO 27005 defines vulnerability as:
 
 ---
 class: middle, center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 # How do you analyse Docker container?
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 # CoreOS Clair
 
 Clair is an open source project for the static analysis of vulnerabilities in **rkt** and **Docker** containers.
@@ -152,15 +179,20 @@ Clair is an open source project for the static analysis of vulnerabilities in **
 On github: [github.com/coreos/clair](http://www.github.com/coreos/clair)
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 # CoreOS Clair
 .center[![Clair](images/clair.png)]
 
 ---
 class: middle, center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 # Use Case
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Quay.io - online automatic analysis
@@ -178,11 +210,13 @@ Have nothing to do.
 3. Tadaa...
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 # Quay.io - Vulnerabilities
 
 .center[![:scale 100%](images/quay.png)]
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # On Premise Registry
@@ -190,6 +224,7 @@ Have nothing to do.
 - [Registry-UI](https://github.com/jgsqware/registry-ui): Simple UI interface with security reports and User authentication
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Continuous integration pipeline security
@@ -202,6 +237,7 @@ Have nothing to do.
 - Clair analyse it and update vulnerability state
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Local Image Analysis
@@ -213,6 +249,7 @@ Have nothing to do.
 ➜ [local image analysis tool](https://github.com/coreos/clair/tree/master/contrib/analyze-local-images)
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # How to integrate Clair
@@ -222,10 +259,14 @@ Have nothing to do.
 
 ---
 class: middle, center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 # Hyperclair
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 # Hyperclair
 
@@ -236,6 +277,8 @@ class: middle, center
 
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 # Hyperclair
 
@@ -246,6 +289,8 @@ class: middle, center
 
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 # Hyperclair
 
@@ -258,6 +303,7 @@ class: middle, center
   - `hyperclair report -f [html|json] jgsqware/ubuntu-git`
 
 ---
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 # Hyperclair
 
