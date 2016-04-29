@@ -1,0 +1,56 @@
+   body {
+      font-family: 'Droid Serif';
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: normal;
+    }
+
+    .remark-code,
+    .remark-inline-code {
+      font-family: 'Ubuntu Mono';
+    }
+
+    .note {
+      color: red;
+      font-size: 150%;
+    }
+
+    .quote {
+      font-style: italic;
+    }
+
+    .subtitle {
+        font-size: 80%;
+    }
+
+    .profile {
+      position: absolute;
+      left:70%;
+      top: 10%;
+    }
+    
+    .logo {
+      position: absolute;
+      left:1%;
+      top: 94%;
+      text-align: left;
+    }
+
+    a {
+  transition: color .4s;
+  color: #265C83;
+}
+
+a:link,
+a:visited { color: #265C83; }
+a:hover   { color: #7FDBFF; }
+a:active  {
+  transition: color .3s;
+  color: #007BE6;
+}
+
+.link { text-decoration: none; }
