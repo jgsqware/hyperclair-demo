@@ -18,11 +18,20 @@
       color: red;
       font-size: 150%;
     }
-
+    .small { 
+        
+        font-size: 50%;
+    }
     .quote {
       font-style: italic;
     }
+    
 
+    .quote-big {
+      font-style: italic;
+      font-size: 140%;
+      color: #265C83;
+    }
     .subtitle {
         font-size: 80%;
     }
