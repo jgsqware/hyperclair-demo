@@ -13,7 +13,10 @@
     .remark-inline-code {
       font-family: 'Ubuntu Mono';
     }
-
+    .white {
+      color: white;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
     .note {
       color: red;
       font-size: 150%;

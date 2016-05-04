@@ -20,23 +20,6 @@ Twitter: [@jgsqware](https://twitter.com/jgsqware)
 
 Github: [github.com/jgsqware](http://www.github.com/jgsqware)
 
-???
-
-
----
-.logo[![:scale 7%](images/wemanity-logo.png)]
-
-#Agenda
-
-1. Container Security concern
-1. Vulnerabilities
-1. Docker Image, Layers & Registry
-1. CoreOS Clair
-1. Clair Control
-1. Demo
-
-
-
 ---
 
 class: center, middle
@@ -46,8 +29,10 @@ class: center, middle
 ##What's one of the main concern when talking about using container in production/sensitive environment?
 
 ---
+class: center
+background-color: #3482BC
+background-image: url(images/DevOps-Security.png)
 
-class: middle, center
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
@@ -55,15 +40,31 @@ class: middle, center
 
 > Container is a security nightmare.
 
-.note[find image for it]
+---
+class: middle, center
+background-image: url(images/containers.jpg)
+background-size: repeat
+
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+.center[![:scale 70%](images/containers-everywhere.jpg)]
+
 ---
 class: middle, center
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 ## Containers, containers everywhere
-.note[Create another images]
-.center[![:scale 100%](images/containers.png)]
+.center[![:scale 70%](images/containers-schema.png)]
+
+---
+class: middle, center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+## Crappy, crappy containers everywhere
+.center[![:scale 70%](images/crappy-containers-schema.png)]
 
 
 ---
@@ -82,20 +83,20 @@ class: middle, center
 > .center.quote[A vulnerability is a weakness who allows an attacker to reduce a system's information assurance.]
 
 ---
-class: middle
+class: middle, center
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-# Heartbleed .note[add Heartbleed pic]
+# Heartbleed ![:scale 7%](images/heartbleed.png) .note[bigger]
 
 [CVE-2014-0160](https://access.redhat.com/security/cve/cve-2014-0160): The TLS and DTLS implementations in OpenSSL do not properly handle
 Heartbeat Extension packets
 
 ---
-class: middle
+class: middle,center
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# Ghost .note[add Ghost pic]
+# Ghost  ![:scale 7%](images/ghost.jpg) .note[bigger]
 
 [CVE-2015-0235](https://access.redhat.com/security/cve/CVE-2015-0235): a buffer overflow bug affecting the gethostbyname() and
 gethostbyname2() function calls in the glibc library.
@@ -103,7 +104,7 @@ gethostbyname2() function calls in the glibc library.
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# CVE - .subtitle[Common Vulnerabilities and Exposure tracker]
+# CVE - .subtitle[Common Vulnerabilities and Exposure tracker] .note[add logo]
 
 .center[[Debian Security Bug Tracker](https://security-tracker.debian.org/tracker)]
 .center[[Ubuntu CVE Tracker](https://launchpad.net/ubuntu-cve-tracker)]
@@ -185,7 +186,7 @@ class: middle, center
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# CoreOS Clair .note.small[Recreate framework schema]
+# CoreOS Clair
 .center[![Clair](images/framework.png)]
 
 ---
@@ -276,12 +277,12 @@ class: center, middle
 
 ---
 class: center, middle
+background-image: url(images/present.jpg)
 .logo[![:scale 7%](images/wemanity-logo.png)]
+<br><br><br><br><br><br>
 
-# Shift-Left mindest 
-## Give the tools to your developers
-
-.note[find tools images]
+#.white[Shift-Left mindest]
+## .white[Give the tools to your developers]
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
