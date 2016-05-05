@@ -58,7 +58,24 @@ class: middle, center
 
 
 ## Container-Solution's Docker Security Cheat-sheet
-.center[![:scale 100%](images/docker-security-cheat-sheet.png)]
+
+| Types / Solutions                                    | KERNEL EXPLOITS | DDOS | CONTAINER BREAKOUTS | POISONED IMAGES | COMPROMISED SECRETS |
+|---------------------------------------------------   |-----------------|------|---------------------|-----------------|---------------------|
+| SEGREGATE CONTAINER GROUPS WITH VMs                  |        X        |   X  |          X          |        X        |           X         |
+| DEFANG SETUID/SETGID BINARIES                        |        X        |   X  |          X          |        X        |           X         |
+| BE AWARE OF CPU SHARES                               |        X        |   X  |          X          |        X        |           X         |
+| VERIFY IMAGES                                        |        X        |   X  |          X          |        X        |           X         |
+| SET CONTAINER FILE SYSTEM TO READ-ONLY               |        X        |   X  |          X          |        X        |           X         |
+| SET A USER                                           |        X        |   X  |          X          |        X        |           X         |
+| DO NOT USE ENVIRONMENT VARIABLES TO SHARE SECRETS    |        X        |   X  |          X          |        X        |           X         |
+| DO NOT RUN CONTAINERS WITH THE --privileged FLAG     |        X        |   X  |          X          |        X        |           X         |
+| TURN OFF INTER-CONTAINER COMMUNICATION               |        X        |   X  |          X          |        X        |           X         |
+| SET VOLUMES TO READ-ONLY                             |        X        |   X  |          X          |        X        |           X         |
+| SET MEMORY LIMITS                                    |        X        |   X  |          X          |        X        |           X         |
+| DO NOT INSTALL UNNECESSARY PACKAGES IN THE CONTAINER |        X        |   X  |          X          |        X        |           X         |
+
+
+// .center[![:scale 100%](images/docker-security-cheat-sheet.png)]
 
 ---
 class: middle, center
