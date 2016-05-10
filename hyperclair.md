@@ -1,11 +1,13 @@
 class: middle,center
 # Container Vulnerability Analysis
-## CoreOS Clair & Clair Control (formerly Hyperclair)
+## CoreOS Clair & Hyperclair
 
-.center[![:scale 30%](images/wemanity.png)]
 
 </br></br>
 .name[Twitter: [@jgsqware](https://twitter.com/jgsqware) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Github: [github.com/jgsqware](http://www.github.com/jgsqware)]
+</br></br>
+.center[![:scale 20%](images/wemanity.png)]
+
 ---
 class: center, middle
 .logo[![:scale 7%](images/wemanity-logo.png)]
@@ -22,9 +24,12 @@ class: center
 
 > Container is a security nightmare.
 
-![:scale 70%](images/DevOps-Security.png)
+![:scale 65%](images/DevOps-Security.png)
 
+---
+class: middle,center
 
+#Context
 ---
 class: middle, center
 background-image: url(images/containers.jpg)
@@ -37,45 +42,37 @@ background-size: repeat
 
 ---
 class: middle, center
+background-color: #64db72
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 ## Containers, containers everywhere
-.center[![:scale 70%](images/containers-schema.png)]
+.center[![:scale 60%](images/containers-schema.png)]
 
 ---
 class: middle, center
+background-color: #f75b5b
+
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 ## Crappy, crappy containers everywhere
-.center[![:scale 70%](images/crappy-containers-schema.png)]
+.center[![:scale 60%](images/crappy-containers-schema.png)]
 
 
 ---
-class: middle, center
+class: middle
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-## Container-Solution's Docker Security Cheat-sheet
+.left-cs[![:scale 120%](images/docker-security-cheat-sheet.png)]
 
-| Types / Solutions                                    | KERNEL EXPLOITS | DDOS | CONTAINER BREAKOUTS | POISONED IMAGES | COMPROMISED SECRETS |
-|---------------------------------------------------   |-----------------|------|---------------------|-----------------|---------------------|
-| SEGREGATE CONTAINER GROUPS WITH VMs                  |        X        |   X  |          X          |        X        |           X         |
-| DEFANG SETUID/SETGID BINARIES                        |        X        |   X  |          X          |        X        |           X         |
-| BE AWARE OF CPU SHARES                               |        X        |   X  |          X          |        X        |           X         |
-| VERIFY IMAGES                                        |        X        |   X  |          X          |        X        |           X         |
-| SET CONTAINER FILE SYSTEM TO READ-ONLY               |        X        |   X  |          X          |        X        |           X         |
-| SET A USER                                           |        X        |   X  |          X          |        X        |           X         |
-| DO NOT USE ENVIRONMENT VARIABLES TO SHARE SECRETS    |        X        |   X  |          X          |        X        |           X         |
-| DO NOT RUN CONTAINERS WITH THE --privileged FLAG     |        X        |   X  |          X          |        X        |           X         |
-| TURN OFF INTER-CONTAINER COMMUNICATION               |        X        |   X  |          X          |        X        |           X         |
-| SET VOLUMES TO READ-ONLY                             |        X        |   X  |          X          |        X        |           X         |
-| SET MEMORY LIMITS                                    |        X        |   X  |          X          |        X        |           X         |
-| DO NOT INSTALL UNNECESSARY PACKAGES IN THE CONTAINER |        X        |   X  |          X          |        X        |           X         |
+---
+class: middle
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-// .center[![:scale 100%](images/docker-security-cheat-sheet.png)]
+.left-cs[![:scale 120%](images/docker-security-cheat-sheet-bordered.png)]
 
 ---
 class: middle, center
@@ -130,8 +127,10 @@ class: middle, center
 # Dynamic analysis
 > .center.quote-big[context: there is millions of containers images]
 
-- performed by executing programs on a real or virtual processor
-- container must be running
+- performed on a **real or virtual** processor
+- container must be **running**
+
+-------------------------------------------------------------------------
 
 - running millions of containers is **expensive**
 - *untrusted* containers is **Unsafe**
@@ -145,8 +144,10 @@ class: middle, center
 > .center.quote-big[context: there is millions of containers images]
 > .center.quote-big[Over 15 vulnerabilites/day]
 
-- performed without executing programs
-- the filesystem of the container image is inspected
+- performed **without executing programs**
+- the **filesystem** of the container image is **inspected**
+
+-----------------------------------------------------------------------------
 
 - Static tools like **dpkg** and **rpm** is used to analyze filesystem
 - Containers layers are analyzed **only once**
@@ -174,44 +175,31 @@ background-color: white
 
 .center[![:scale 40%](images/Clair_horizontal_color.png)]
 
-</br></br></br></br>
-- .big[Enable a more **transparent view** of the security of container-based infrastructure.]
+</br></br>
+- .big[**transparent** security view]
 - .big[Vulnerability data is **continuously imported**]
 - .big[**Notification** on new Vulnerability state with images affected]
-- .big[Works with **AppC** & **Docker** images format]
+- .big[**AppC** & **Docker** support]
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 .center[![:scale 40%](images/Clair_horizontal_color.png)]
 
-</br></br></br></br>
+</br></br>
 
-- .big[Static analyzis]
-- .big[Do the job only once]
-- .big[Suggest & Notify]
-- .big[Built as a framework]
+- .big[Static analyzis] .side-note[distribution specific]
+- .big[Do the job only once] .side-note[backed by Postgresql]
+- .big[Suggest & Notify] .side-note[webhook]
+- .big[Built as a framework] .side-note[pluggable]
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 .center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
 .center[![Clair](images/framework.png)]
-
----
-.logo[![:scale 7%](images/wemanity-logo.png)]
-
-
-# Currently supported
-
-</br></br></br>
-
-- .big[Image format: appc, Docker]
-- .big[Operating systems: Debian, Ubuntu, CentOS]
-    - Detection: package managers (dpkg, rpm)
-    - Vulnerability sources: Distribution-specific
-- .big[Database: PostgresSQL 9.4+]
-- .big[Notification: Webhook]
 
 ---
 class: middle, center
@@ -221,11 +209,10 @@ class: middle, center
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
+# Online automatic analysis with ![:scale 25%](images/quay-logo.png)
+####Private Hosted registry
 
-# Quay.io - online automatic analysis
-
-Quay.io - Private Hosted registry .note[add logo]
-
+</br>
 - **CoreOS** Family
 - Support Clair **by default** for all images
 - Powerful views for reports
@@ -237,7 +224,6 @@ Quay.io - Private Hosted registry .note[add logo]
 
 # Online automatic analysis with ![:scale 25%](images/quay-logo.png)
 
-
 3 steps only
 
 1. Upload your docker image
@@ -248,21 +234,20 @@ Quay.io - Private Hosted registry .note[add logo]
 
 # Online automatic analysis with ![:scale 25%](images/quay-logo.png)
 
-
 3 steps only
 
 1. Upload your docker image
 2. Open security tabs
 3. Tadaa... 
 
-.center[![:scale 50%](images/magic.gif)]
+.img-right[![:scale 150%](images/magic.gif)]
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 # Security analysis report on ![:scale 25%](images/quay-logo.png)
 
-.center[![:scale 100%](images/quay-report.png)]
+.left-cs[![:scale 120%](images/quay-report.png)]
 
 ---
 class: middle, center
@@ -316,43 +301,62 @@ class: middle, center
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-# Clair Control aka clairctl .small[formerly known as Hyperclair]
+# Hyperclair
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-# Clair Control aka clairctl
+# Hyperclair
 
 - Lightweight CLI (written in go)
 - Bridge between Registries (Docker Hub, Docker Registry) and Clair vulnerability tracker
 - Html report generation
+---
+class: middle, center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# Why?
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-# Clair Control aka clairctl
+# .center[Why?]
+</br></br></br>
+
+- Want to learn **Go**
+- Analyze-local-image tool is not **User-Friendly**
+- **Registry Authentication** needed
+- **Big need** in my current project context
+
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# Hyperclair
 
 - Command based on Docker Client Command
-  - `clairctl version`
-  - `clairctl health`
-  - `clairctl pull jgsqware/ubuntu-git`
-  - `clairctl push jgsqware/ubuntu-git`
-  - `clairctl analyse jgsqware/ubuntu-git`
-  - `clairctl report -f [html|json] jgsqware/ubuntu-git`
+  - `hyperclair version`
+  - `hyperclair health`
+  - `hyperclair pull jgsqware/ubuntu-git`
+  - `hyperclair push jgsqware/ubuntu-git`
+  - `hyperclair analyse jgsqware/ubuntu-git`
+  - `hyperclair report -f [html|json] jgsqware/ubuntu-git`
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# Local Image Analysis with clairctl
+# Local Image Analysis with hyperclair
 
-.center[![:scale 75%](images/local-pipeline.png)]
+.center[![:scale 85%](images/local-pipeline.png)]
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# Clair Control aka clairctl
+# Hyperclair
 
 - Current version: `v0.4.0`
     - Login through different registries
@@ -360,8 +364,10 @@ class: middle, center
         - Docker Hub
     - Local image analysis
     
-- On going
+- Future
+ - Will be integrated in Clair repository as **Clairctl** ([PR #164](https://github.com/coreos/clair/pull/164))
  - Support of Quay.io and Google Cloud Container Registry
+ - Many more...
 
 ---
 class: middle,center

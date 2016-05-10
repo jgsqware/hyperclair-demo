@@ -14,7 +14,7 @@
    }
    
    .remark-slide-content {
-       background-color: #82B7DE;
+       background-color: #c0daed;
        font-size: 25px;
    }
    
@@ -24,7 +24,7 @@
    }
    
    .name{
-       font-size: 60%;
+       font-size: 80%;
    }
    .white {
        color: #dedede;
@@ -43,6 +43,10 @@
    
    .small {
        font-size: 50%;
+   }
+   
+   .side-note {
+       font-size: 70%;
    }
    
    .quote {
@@ -74,6 +78,16 @@
        left: 1%;
        top: 94%;
        text-align: left;
+   }
+   
+   .img-right {
+       position: absolute;
+       left: 60%;
+       top: 30%;
+   }
+   
+   .left-cs {
+       margin-left: -100px;
    }
    
    a {
