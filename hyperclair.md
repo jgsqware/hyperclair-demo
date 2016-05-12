@@ -186,12 +186,8 @@ background-color: white
 
 .center[![:scale 40%](images/Clair_horizontal_color.png)]
 
-</br></br>
-
-- .big[Static analyzis] .side-note[distribution specific]
-- .big[Do the job only once] .side-note[backed by Postgresql]
-- .big[Suggest & Notify] .side-note[webhook]
-- .big[Built as a framework] .side-note[pluggable]
+</br>
+.center[![Clair](images/framework.png)]
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
@@ -199,7 +195,59 @@ background-color: white
 .center[![:scale 40%](images/Clair_horizontal_color.png)]
 
 </br>
-.center[![Clair](images/framework.png)]
+.center[![Clair](images/framework-tracker.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-datastore.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-detector.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-notifier.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-api.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-client.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br></br>
+
+- .big[Static analyzis] .side-note[distribution specific]
+- .big[Do the job only once] .side-note[backed by Postgresql]
+- .big[Suggest & Notify] .side-note[webhook]
+- .big[Built as a framework] .side-note[pluggable]
 
 ---
 class: middle, center
@@ -226,7 +274,7 @@ class: middle, center
 
 3 steps only
 
-1. Upload your docker image
+1. Upload your image
 2. Open security tabs
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
@@ -236,7 +284,7 @@ class: middle, center
 
 3 steps only
 
-1. Upload your docker image
+1. Upload your image
 2. Open security tabs
 3. Tadaa... 
 
@@ -349,6 +397,39 @@ class: middle, center
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
+
+# Hyperclair - Configuration
+
+- Configuration file:
+  
+  ```
+  clair:
+      port: 6060
+      healthPort: 6061
+      uri: http://clair
+      priority: Low
+      report:
+        path: ./reports
+        format: html
+  ```
+  
+
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# Hyperclair - Configuration
+
+- Environment variables:
+
+  `HYPERCLAIR_<property>`
+  
+  eg. `HYPERCLAIR_CLAIR_PORT=6060`
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 # Local Image Analysis with hyperclair
 
 .center[![:scale 85%](images/local-pipeline.png)]
@@ -356,9 +437,18 @@ class: middle, center
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# Hyperclair
+# .name[What's next:] Clair
+    
+ - MySQL driver for datastore
+ - Alpine, Npm,... trackers
+ 
 
-- Current version: `v0.4.0`
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+# .name[What's next:] Hyperclair
+
+- Current version: `v0.5.0`
     - Login through different registries
         - Docker Registry on premise
         - Docker Hub
@@ -371,10 +461,14 @@ class: middle, center
 
 ---
 class: middle,center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 # Demo
 
 ---
 class: middle,center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 # Questions ?
