@@ -1,261 +1,348 @@
 class: middle,center
 # Container Vulnerability Analysis
-## CoreOS Clair & Clair Control (formerly Hyperclair)
-
-.center[![:scale 30%](images/wemanity.png)]
----
-.logo[![:scale 7%](images/wemanity-logo.png)]
-
-# Who am I?
+## CoreOS Clair & Hyperclair
 
 
-- Devops facilitator @ Wemanity
-- Docker lover
-- Golang dev newbie
-- Eternal frustrated
-
-.profile[![:scale 60%](images/profile.jpg)]
-
-Twitter: [@jgsqware](https://twitter.com/jgsqware)
-
-Github: [github.com/jgsqware](http://www.github.com/jgsqware)
-
-???
-
+</br></br>
+.name[Twitter: [@jgsqware](https://twitter.com/jgsqware) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Github: [github.com/jgsqware](http://www.github.com/jgsqware)]
+</br></br>
+.center[![:scale 20%](images/wemanity.png)]
 
 ---
-.logo[![:scale 7%](images/wemanity-logo.png)]
-
-#Agenda
-
-1. Container Security concern
-1. Vulnerabilities
-1. Docker Image, Layers & Registry
-1. CoreOS Clair
-1. Clair Control
-1. Demo
-
-
-
----
-
 class: center, middle
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-##What's one of the main concern when talking about using container in production/sensitive environment?
+##Main concern using container 
+##in production/sensitive environment?
 
 ---
-
-class: middle, center
+class: center
 .logo[![:scale 7%](images/wemanity-logo.png)]
-
 
 # SECURITY!
 
 > Container is a security nightmare.
 
+![:scale 65%](images/DevOps-Security.png)
+
+---
+class: middle,center
+
+#Context
 ---
 class: middle, center
+background-image: url(images/containers.jpg)
+background-size: repeat
+
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-## [Container-Solution's Docker Security Cheat-sheet](http://container-solutions.com/docker-security-cheat-sheet/)
-.center[![:scale 100%](images/docker-security-cheat-sheet.png)]
+.center[![:scale 70%](images/containers-everywhere.jpg)]
 
 ---
+class: middle, center
+background-color: #64db72
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-# Docker security
-Since 1.10 .right[.note[&nbsp;]]
-
-.center[![:scale 100%](images/docker-security.jpg)]
+## Containers, containers everywhere
+.center[![:scale 60%](images/containers-schema.png)]
 
 ---
+class: middle, center
+background-color: #f75b5b
+
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# Docker security
-Since 1.10 .right[.note[-> Missing vulnerability analysis]]
 
-.center[![:scale 100%](images/docker-security.jpg)]
+## Crappy, crappy containers everywhere
+.center[![:scale 60%](images/crappy-containers-schema.png)]
 
+
+---
+class: middle
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+.left-cs[![:scale 120%](images/docker-security-cheat-sheet.png)]
+
+---
+class: middle
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+.left-cs[![:scale 120%](images/docker-security-cheat-sheet-bordered.png)]
+
+---
+class: middle, center
+
+.logo[![:scale 7%](images/wemanity-logo.png)]
 # Vulnerabilities
+> .center.quote[A vulnerability is a weakness who allows an attacker to reduce a system's information assurance.]
+
+---
 class: middle, center
+background-color: black
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# .note[Heartbleed] ![:scale 7%](images/heartbleed.png)
+
+.white[[CVE-2014-0160](https://access.redhat.com/security/cve/cve-2014-0160): The TLS and DTLS implementations in OpenSSL do not properly handle
+Heartbeat Extension packets]
+
+---
+class: middle,center
+background-color: black
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+# .note[Ghost]  ![:scale 7%](images/ghost.png) 
+
+.white[[CVE-2015-0235](https://access.redhat.com/security/cve/CVE-2015-0235): a buffer overflow bug affecting the gethostbyname() and
+gethostbyname2() function calls in the glibc library.]
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
+# .center[CVE - .subtitle[Common Vulnerabilities and Exposure tracker]]
 
-# What is a vulnerability?
-
-ISO 27005 defines vulnerability as:
-
-> .quote[A weakness of an asset or group of assets that can be exploited by one or more threats]
-
-> .quote[An asset is anything that has value to the organization, its business operations and their continuity, including information resources that support the organization's mission]
+</br></br></br></br>
+.big.center[[Debian Security Bug Tracker](https://security-tracker.debian.org/tracker)]
+.big.center[[Ubuntu CVE Tracker](https://launchpad.net/ubuntu-cve-tracker)]
+.big.center[[Red Hat Security Data](https://www.redhat.com/security/data/metrics)]
 
 ---
-.logo[![:scale 7%](images/wemanity-logo.png)]
-
-
-# Last big vulnerabilities
-
-- **Heartbleed** [CVE-2014-0160](https://access.redhat.com/security/cve/cve-2014-0160): in OpenSSL cryptography
-- **Dual A/AAAA DNS queries** [CVE-2015-7547](https://access.redhat.com/security/cve/cve-2015-7547): GNU C Library (aka glibc or libc6)
-
----
-.logo[![:scale 7%](images/wemanity-logo.png)]
-
-# CVE - .subtitle[Common Vulnerabilities and Exposure tracker]
-
-.center[[Debian Security Bug Tracker](https://security-tracker.debian.org/tracker)]
-.center[[Ubuntu CVE Tracker](https://launchpad.net/ubuntu-cve-tracker)]
-.center[[Red Hat Security Data](https://www.redhat.com/security/data/metrics)]
-.center[[dpkg](https://en.wikipedia.org/wiki/dpkg)]
-.center[[rpm](http://www.rpm.org)]
-
----
+class: middle, center
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Vulnerability Analysis
-
-2 ways:
-
-- Dynamic analysis
-- Static analysis
+## Dynamic vs Static
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Dynamic analysis
+> .center.quote-big[context: there is millions of containers images]
 
-- performed by executing programs on a real or virtual processor
-- container must be running
+- performed on a **real or virtual** processor
+- container must be **running**
+
+-------------------------------------------------------------------------
+
+- running millions of containers is **expensive**
+- *untrusted* containers is **Unsafe**
+- Dynamic analysis tools need **Human** input
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
 # Static analysis
+> .center.quote-big[context: there is millions of containers images]
+> .center.quote-big[Over 15 vulnerabilites/day]
 
-- performed without executing programs
-- the filesystem of the container image is inspected
+- performed **without executing programs**
+- the **filesystem** of the container image is **inspected**
 
----
-.logo[![:scale 7%](images/wemanity-logo.png)]
+-----------------------------------------------------------------------------
 
-# Docker Image, Layers & Registry
-
-.center[![:scale 90%](images/docker-layered-filesystem-1.jpg)]
-
----
-.logo[![:scale 7%](images/wemanity-logo.png)]
-
-# Docker Layers
-
-.center[![:scale 100%](images/docker-layered-filesystem.png)]
+- Static tools like **dpkg** and **rpm** is used to analyze filesystem
+- Containers layers are analyzed **only once**
 
 ---
 class: middle, center
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# How do you analyse Docker container?
+# How do you analyse containers?
+
+---
+class: middle, center
+background-color: white
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+![:scale 40%](images/Clair_horizontal_color.png)
+
+
+> .quote-big[an open source project for the static analysis of vulnerabilities in **rkt** and **Docker** containers.]
+.right.small[[github.com/coreos/clair](http://www.github.com/coreos/clair)]
+
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# CoreOS Clair
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
 
-Clair is an open source project for the static analysis of vulnerabilities in **rkt** and **Docker** containers.
-
-- Enable a more transparent view of the security of container-based infrastructure.
-- Vulnerability data is continuously imported
-- Notification on new Vulnerability state with images affected
-- Works with AppC & Docker images format
-
-On github: [github.com/coreos/clair](http://www.github.com/coreos/clair)
+</br></br>
+- .big[**transparent** security view]
+- .big[Vulnerability data is **continuously imported**]
+- .big[**Notification** on new Vulnerability state with images affected]
+- .big[**AppC** & **Docker** support]
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# CoreOS Clair
-.center[![Clair](images/clair.png)]
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-tracker.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-datastore.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-detector.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-notifier.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-api.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br>
+.center[![Clair](images/framework-client.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+.center[![:scale 40%](images/Clair_horizontal_color.png)]
+
+</br></br>
+
+- .big[Static analyzis] .side-note[distribution specific]
+- .big[Do the job only once] .side-note[backed by Postgresql]
+- .big[Suggest & Notify] .side-note[webhook]
+- .big[Built as a framework] .side-note[pluggable]
 
 ---
 class: middle, center
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-
-# Use Case
-
+# Can I already used it?
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
+# Online automatic analysis with ![:scale 25%](images/quay-logo.png)
+####Private Hosted registry
 
-# Quay.io - online automatic analysis
-
-Quay.io - Private Hosted registry
-
-- CoreOS Family
-- Support Clair by default for all images
+</br>
+- **CoreOS** Family
+- Support Clair **by default** for all images
 - Powerful views for reports
 - Integrate easily with CI and Git repository
 
-Have nothing to do.
-1. Upload your docker image
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# Online automatic analysis with ![:scale 25%](images/quay-logo.png)
+
+3 steps only
+
+1. Upload your image
 2. Open security tabs
-3. Tadaa...
-
----
-.logo[![:scale 7%](images/wemanity-logo.png)]
-
-# Quay.io - Vulnerabilities
-
-.center[![:scale 100%](images/quay.png)]
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-# On Premise Registry
-- [Dockyard](https://github.com/containerops/dockyard): an open source container registry with Clair integration
-- [Registry-UI](https://github.com/jgsqware/registry-ui): Simple UI interface with security reports and User authentication
+# Online automatic analysis with ![:scale 25%](images/quay-logo.png)
+
+3 steps only
+
+1. Upload your image
+2. Open security tabs
+3. Tadaa... 
+
+.img-right[![:scale 150%](images/magic.gif)]
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
+# Security analysis report on ![:scale 25%](images/quay-logo.png)
 
-# Continuous integration pipeline security
-
-- New vulnerability is introduced
-- Clair notify CI of new vulnerability along with the image affected
-- CI stop the automatic deployment & notify development team
-- Dev team fix the vulnerability and push the new container
-- CI build & test and send to Clair new container
-- Clair analyse it and update vulnerability state
+.left-cs[![:scale 120%](images/quay-report.png)]
 
 ---
+class: middle, center
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-# Local Image Analysis
+# Use Cases
 
-- Creating new image
-- Depends on third-party container
-- Prevent before curing
+---
+class: center, middle
+.logo[![:scale 7%](images/wemanity-logo.png)]
 
-➜ [local image analysis tool](https://github.com/coreos/clair/tree/master/contrib/analyze-local-images)
+# Continuous integration pipeline security 
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
 
-# How to integrate Clair
+# Continuous integration pipeline security 
 
-- Clair API
-- Or...
+.center[![:scale 100%](images/CI-pipeline.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# Continuous integration pipeline security 
+
+.center[![:scale 100%](images/CI-pipeline-resolved.png)]
+
+
+---
+class: center, middle
+background-image: url(images/present.jpg)
+.logo[![:scale 7%](images/wemanity-logo.png)]
+<br><br><br><br><br><br>
+
+#.white-stroke[Shift-Left mindest]
+## .white-stroke[Give the tools to your developers]
+
+---
+class: center, middle
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# How do I analyze my local images with Clair?
+
 
 ---
 class: middle, center
@@ -263,18 +350,6 @@ class: middle, center
 
 
 # Hyperclair
-
----
-.logo[![:scale 7%](images/wemanity-logo.png)]
-
-
-# Hyperclair
-
-.center[![:scale 70%](images/hyperclair.png)]
-> .quote[Tracking vulnerabilities in your container images, it's easy with **CoreOS Clair**.]
-
-> .quote[Integrate it inside your CI/CD pipeline is easier with **Hyperclair**.]
-
 
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
@@ -283,9 +358,26 @@ class: middle, center
 # Hyperclair
 
 - Lightweight CLI (written in go)
-- Bridge between Registries (Docker Hub, Docker Registry, Quay.IO) and Clair vulnerability tracker
-- Html/ASCII report generation
-- Open Source (followed by Clair team)
+- Bridge between Registries (Docker Hub, Docker Registry) and Clair vulnerability tracker
+- Html report generation
+---
+class: middle, center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# Why?
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# .center[Why?]
+</br></br></br>
+
+- Want to learn **Go**
+- Analyze-local-image tool is not **User-Friendly**
+- **Registry Authentication** needed
+- **Big need** in my current project context
 
 
 ---
@@ -305,19 +397,78 @@ class: middle, center
 ---
 .logo[![:scale 7%](images/wemanity-logo.png)]
 
-# Hyperclair
 
-- Current version: `v0.2.0`
-  - Support
-    - Docker Registry based container (authenticated or not)
-    - Docker Hub
+# Hyperclair - Configuration
 
-- On going
- - Login as Docker Client
+- Configuration file:
+  
+  ```
+  clair:
+      port: 6060
+      healthPort: 6061
+      uri: http://clair
+      priority: Low
+      report:
+        path: ./reports
+        format: html
+  ```
+  
+
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# Hyperclair - Configuration
+
+- Environment variables:
+
+  `HYPERCLAIR_<property>`
+  
+  eg. `HYPERCLAIR_CLAIR_PORT=6060`
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+# Local Image Analysis with hyperclair
+
+.center[![:scale 85%](images/local-pipeline.png)]
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+# .name[What's next:] Clair
+    
+ - MySQL driver for datastore
+ - Alpine, Npm,... trackers
+ 
+
+---
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+# .name[What's next:] Hyperclair
+
+- Current version: `v0.5.0`
+    - Login through different registries
+        - Docker Registry on premise
+        - Docker Hub
+    - Local image analysis
+    
+- Future
+ - Will be integrated in Clair repository as **Clairctl** ([PR #164](https://github.com/coreos/clair/pull/164))
  - Support of Quay.io and Google Cloud Container Registry
- - Analysing Local images
+ - Many more...
 
 ---
 class: middle,center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
+
+# Demo
+
+---
+class: middle,center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 # Questions ?

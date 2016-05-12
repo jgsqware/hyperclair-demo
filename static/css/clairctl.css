@@ -1,56 +1,114 @@
    body {
-      font-family: 'Droid Serif';
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Yanone Kaffeesatz';
-      font-weight: normal;
-    }
-
-    .remark-code,
-    .remark-inline-code {
-      font-family: 'Ubuntu Mono';
-    }
-
-    .note {
-      color: red;
-      font-size: 150%;
-    }
-
-    .quote {
-      font-style: italic;
-    }
-
-    .subtitle {
-        font-size: 80%;
-    }
-
-    .profile {
-      position: absolute;
-      left:70%;
-      top: 10%;
-    }
-    
-    .logo {
-      position: absolute;
-      left:1%;
-      top: 94%;
-      text-align: left;
-    }
-
-    a {
-  transition: color .4s;
-  color: #265C83;
-}
-
-a:link,
-a:visited { color: #265C83; }
-a:hover   { color: #7FDBFF; }
-a:active  {
-  transition: color .3s;
-  color: #007BE6;
-}
-
-.link { text-decoration: none; }
+       font-family: 'Droid Serif';
+   }
+   
+   h1,
+   h2,
+   h3 {
+       font-family: 'Yanone Kaffeesatz';
+       font-weight: normal;
+   }
+   
+   li {
+       margin: 10px 0;
+   }
+   
+   .remark-slide-content {
+       background-color: #c0daed;
+       font-size: 25px;
+   }
+   
+   .remark-code,
+   .remark-inline-code {
+       font-family: 'Ubuntu Mono';
+   }
+   
+   .name{
+       font-size: 80%;
+   }
+   .white {
+       color: #dedede;
+       /*text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;*/
+   }
+   
+   .white-stroke {
+       color: white;
+       -webkit-text-stroke: 1px black;
+   }
+   
+   .note {
+       color: #B90000;
+       font-size: 140%;
+   }
+   
+   .small {
+       font-size: 50%;
+   }
+   
+   .side-note {
+       font-size: 70%;
+   }
+   
+   .quote {
+       font-style: italic;
+   }
+   
+   .big {
+       font-size: 140%;
+   }
+   
+   .quote-big {
+       font-style: italic;
+       font-size: 150%;
+       color: #11474A;
+   }
+   
+   .subtitle {
+       font-size: 80%;
+   }
+   
+   .profile {
+       position: absolute;
+       left: 70%;
+       top: 10%;
+   }
+   
+   .logo {
+       position: absolute;
+       left: 1%;
+       top: 94%;
+       text-align: left;
+   }
+   
+   .img-right {
+       position: absolute;
+       left: 60%;
+       top: 30%;
+   }
+   
+   .left-cs {
+       margin-left: -100px;
+   }
+   
+   a {
+       transition: color .4s;
+       color: #265C83;
+   }
+   
+   a:link,
+   a:visited {
+       color: #265C83;
+   }
+   
+   a:hover {
+       color: #7FDBFF;
+   }
+   
+   a:active {
+       transition: color .3s;
+       color: #007BE6;
+   }
+   
+   .link {
+       text-decoration: none;
+   }

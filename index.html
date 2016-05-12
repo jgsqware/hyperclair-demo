@@ -2,28 +2,29 @@
 <html>
 
 <head>
-  <title>Container Vulnerability Analysis</title>
-  <meta charset="utf-8">
-  <link href='static/css/droid-serif.css' rel='stylesheet' type='text/css'>
-  <link href='static/css/yanone-kaffeesatz.css' rel='stylesheet' type='text/css'>
-  <link href='static/css/ubuntu-mono.css' rel='stylesheet' type='text/css'>
-  <link href='static/css/clairctl.css' rel='stylesheet' type='text/css'>
+    <title>Container Vulnerability Analysis</title>
+    <meta charset="utf-8">
+    <link href='static/css/droid-serif.css' rel='stylesheet' type='text/css'>
+    <link href='static/css/yanone-kaffeesatz.css' rel='stylesheet' type='text/css'>
+    <link href='static/css/ubuntu-mono.css' rel='stylesheet' type='text/css'>
+    <link href='static/css/clairctl.css' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-  <script src="static/js/remark-latest.min.js">
-  </script>
-  <script>
-      remark.macros.scale = function (percentage) {
-    var url = this;
-    return '<img src="' + url + '" style="width: ' + percentage + '" />';
-  };
-    var slideshow = remark.create({
-      sourceUrl: 'hyperclair.md'
-    });
-
-  </script>
+    <script src="static/js/remark-latest.min.js">
+    </script>
+    <script>
+        remark.macros.scale = function(percentage) {
+            var url = this;
+            return '<img src="' + url + '" style="width: ' + percentage + '" />';
+        };
+        var slideshow = remark.create({
+            ratio: '16:9',
+            sourceUrl: 'hyperclair.md',
+            slideNumberFormat: ''
+        });
+    </script>
 </body>
 
 </html>
