@@ -1,0 +1,11 @@
+version: "2"
+services:
+    hyperclair-demo:
+        build: .
+        ports:
+            - "8000:8000"
+    decktape:
+        image: astefanutti/decktape
+        volumes:
+            - .:/pwd
+        command:  --load-pause 1000 remark http://hyperclair-demo:8000 /pwd/slides.pdf
