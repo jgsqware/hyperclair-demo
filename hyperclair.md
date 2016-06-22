@@ -1,4 +1,7 @@
 class: middle,center
+.footer[.link-voxxed[voxxeddays.com/luxembourg/]]
+.banner[![:scale 63%](images/voxxed-lu-banner.jpeg)]
+.hashtag-voxxed[&#35;voxxed.hashtag-voxxed-blue[days]LU]
 # Container Vulnerability Analysis
 ## CoreOS Clair & Hyperclair
 
@@ -6,6 +9,7 @@ class: middle,center
 </br></br>
 .name[Twitter: [@jgsqware](https://twitter.com/jgsqware) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Github: [github.com/jgsqware](http://www.github.com/jgsqware)]
 </br></br>
+
 .center[![:scale 20%](images/wemanity.png)]
 
 ---
@@ -28,6 +32,8 @@ class: center
 
 ---
 class: middle,center
+.logo[![:scale 7%](images/wemanity-logo.png)]
+
 
 #Context
 ---
@@ -440,7 +446,8 @@ class: middle, center
 # .name[What's next:] Clair
     
  - MySQL driver for datastore
- - Alpine, Npm,... trackers
+ - Alpine, Arch, Npm,... trackers
+ - POST images to API
  
 
 ---
